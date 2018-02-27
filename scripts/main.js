@@ -49,6 +49,7 @@ function initializeEvents() {
 
 initializeEvents();
 
+var baseURL = "http://localhost:3000/";
 var currentImage = 0;
 var imgArray = new Array(
   "img/otter1.jpg",
@@ -59,24 +60,40 @@ var imgArray = new Array(
 );
 
 function UpdateImage_prev() {
-  if (currentImage > 0) {
-    currentImage -= 1;
-  }
-  if (currentImage == 0) {
-    currentImage = imgArray.length;
+  for (var i = 0; i < imgArray.length; ++i) {
+    if (document.getElementById("BIG_PIC").src == baseURL + imgArray[i]) {
+      currentImage = i;
+      i = imgArray.length;
+    }
   }
 
-  document.getElementsByClassName("thumbnail-image").src = imgArray[currentImage];
+  if (currentImage > 0) {
+    currentImage = currentImage - 1;
+  } else if (currentImage == 0) {
+    currentImage = imgArray.length - 1;
+  }
+
+  document.getElementById("BIG_PIC").src = baseURL + imgArray[currentImage];
 }
 
 function UpdateImage_next() {
+  for (var i = 0; i < imgArray.length; ++i) {
+    if (document.getElementById("BIG_PIC").src == baseURL + imgArray[i]) {
+      currentImage = i;
+      i = imgArray.length;
+    }
+  }
+
   if (currentImage >= 0) {
-    currentImage += 1;
+    currentImage = currentImage + 1;
   }
   if (currentImage >= imgArray.length) {
     currentImage = 0;
   }
-  document.getElementsByClassName("thumbnail-image").src = imgArray[currentImage];
+
+  document.getElementById("BIG_PIC").src = baseURL + imgArray[currentImage];
+  currentImage = document.getElementById("BIG_PIC").src.getAttribute("value");
 }
-document.query("go_next").addEventListener("click", UpdateImage_next);
-document.query("go_prev").addEventListener("click", UpdateImage_prev);
+
+document.getElementById("nextbtn").addEventListener("click", UpdateImage_next);
+document.getElementById("prevbtn").addEventListener("click", UpdateImage_prev);

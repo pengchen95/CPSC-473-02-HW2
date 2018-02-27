@@ -49,13 +49,13 @@
 
     <div class="detail-image-container">
       <div class="detail-image-wrapper">
-        <img class="detail-image" data-image-role="target" src="img/otter1.jpg" alt="">
+        <img class="detail-image" id="BIG_PIC" data-image-role="target" src="img/otter1.jpg" alt="">
         <span class="detail-image-title" data-image-role="title">Stayin' Alive</span>
       </div>
     </div>
   </main>
-  <input type="button" value="<< PREVIOUS" name="go_prev" onclick="UpdateImage_prev(currentImage)">
-  <input type="button" value=">> NEXT" name="go_next" onclick="UpdateImage_next(currentImage)">
+  <input type="button" input id="prevbtn" value="<< PREVIOUS" name="go_prev">
+  <input type="button" input id="nextbtn" value=">> NEXT" name="go_next">
   <script src="scripts/main.js" charset="utf-8"></script>
 
 </body>
