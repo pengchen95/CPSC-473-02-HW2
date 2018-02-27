@@ -54,41 +54,10 @@
       </div>
     </div>
   </main>
+  <input type="button" value="<< PREVIOUS" name="go_prev" onclick="UpdateImage_prev(currentImage)">
+  <input type="button" value=">> NEXT" name="go_next" onclick="UpdateImage_next(currentImage)">
   <script src="scripts/main.js" charset="utf-8"></script>
 
-  <script>
-    var currentImage = 0;
-    var imgArray = new Array(
-      "img/otter1.jpg",
-      "img/otter2.jpg",
-      "img/otter3.jpg",
-      "img/otter4.jpg",
-      "img/otter5.jpg"
-    );
-
-    function UpdateImage_prev() {
-      if (currentImage > 0) {
-        currentImage -= 1;
-      }
-      if (currentImage == 0) {
-        currentImage = imgArray.length;
-      }
-
-      document.getElementsByClassName("thumbnail-image").src = imgArray[currentImage];
-    }
-
-    function UpdateImage_next() {
-      if (currentImage >= 0) {
-        currentImage += 1;
-      }
-      if (currentImage >= imgArray.length) {
-        currentImage = 0;
-      }
-      document.getElementsByClassName("thumbnail-image").src = imgArray[currentImage];
-    }
-  </script>
-  <input type="button" value="<< PREVIOUS" name="go_prev" onclick="UpdateImage_prev()">
-  <input type="button" value=">> NEXT" name="go_next" onclick="UpdateImage_next()">
 </body>
 
 </html>

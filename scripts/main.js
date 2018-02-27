@@ -48,3 +48,35 @@ function initializeEvents() {
 }
 
 initializeEvents();
+
+var currentImage = 0;
+var imgArray = new Array(
+  "img/otter1.jpg",
+  "img/otter2.jpg",
+  "img/otter3.jpg",
+  "img/otter4.jpg",
+  "img/otter5.jpg"
+);
+
+function UpdateImage_prev() {
+  if (currentImage > 0) {
+    currentImage -= 1;
+  }
+  if (currentImage == 0) {
+    currentImage = imgArray.length;
+  }
+
+  document.getElementsByClassName("thumbnail-image").src = imgArray[currentImage];
+}
+
+function UpdateImage_next() {
+  if (currentImage >= 0) {
+    currentImage += 1;
+  }
+  if (currentImage >= imgArray.length) {
+    currentImage = 0;
+  }
+  document.getElementsByClassName("thumbnail-image").src = imgArray[currentImage];
+}
+document.query("go_next").addEventListener("click", UpdateImage_next);
+document.query("go_prev").addEventListener("click", UpdateImage_prev);
